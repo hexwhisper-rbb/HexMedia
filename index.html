@@ -2,681 +2,516 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#05080f">
-  <meta name="description" content="HEXMEDIA — Discover underground African music, videos, lyrics, artists and entertainment news.">
-  <title>HEXMEDIA — Underground Sound</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d16">
+<meta name="description" content="HexMedia — music, videos, lyrics, artists and entertainment news.">
+<title>HexMedia — Sound. Culture. Discovery.</title>
 
-  <style>
-    :root {
-      --bg: #05080f;
-      --panel: #0b1220;
-      --blue: #168bff;
-      --bright: #56b5ff;
-      --text: #f3f7ff;
-      --muted: #9aa9bd;
-      --border: #172b45;
-    }
+<style>
+:root {
+  --bg:#080d16;
+  --panel:#101a29;
+  --panel2:#152237;
+  --blue:#168bff;
+  --text:#f2f5fa;
+  --muted:#9baac0;
+  --line:#26364b;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:15px/1.65 system-ui,-apple-system,Segoe UI,sans-serif;
+}
+a { color:inherit; text-decoration:none; }
+button,input { font:inherit; }
+a:focus-visible,button:focus-visible,input:focus-visible {
+  outline:2px solid var(--blue);
+  outline-offset:3px;
+}
+.wrap { width:min(1100px,92%); margin:auto; }
+header { border-bottom:1px solid var(--line); }
+.top {
+  display:flex; align-items:center; gap:18px;
+  padding:17px 0;
+}
+.brand {
+  font-size:24px; font-weight:900;
+  letter-spacing:1.5px; white-space:nowrap;
+}
+.brand span { color:var(--blue); }
+.tag {
+  font-size:10px; color:var(--muted); letter-spacing:2px;
+}
+.search { flex:1; min-width:100px; }
+.search input {
+  width:100%; background:var(--panel); color:var(--text);
+  border:1px solid var(--line); border-radius:7px;
+  padding:11px 13px;
+}
+nav {
+  display:flex; gap:22px; overflow-x:auto;
+  padding:0 0 14px;
+}
+nav a { font-size:13px; color:#c4cede; white-space:nowrap; }
+nav a:hover { color:#55aaff; }
 
-    * {
-      box-sizing: border-box;
-    }
+.hero { padding:36px 0 24px; }
+.kicker,.meta {
+  color:#55aaff; font-size:11px;
+  letter-spacing:2px; font-weight:800;
+}
+h1 {
+  font-size:clamp(30px,6vw,51px);
+  line-height:1.12; letter-spacing:-1.4px;
+  margin:12px 0;
+}
+h2 { font-size:21px; margin:0; }
+h3 { font-size:14px; line-height:1.4; margin:5px 0; }
+p { color:var(--muted); }
+.hero p { max-width:580px; margin:12px 0 20px; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; }
+.btn {
+  display:inline-block; border:1px solid var(--line);
+  border-radius:6px; padding:10px 15px;
+  background:var(--panel); color:var(--text);
+  cursor:pointer; font-weight:650; font-size:13px;
+}
+.btn.primary { background:var(--blue); border-color:var(--blue); color:white; }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 76px;
-    }
+.feature {
+  display:grid; grid-template-columns:1.1fr 1fr;
+  gap:22px; background:linear-gradient(120deg,#101d30,#0b111d);
+  border:1px solid var(--line); border-radius:12px;
+  padding:22px; margin-top:22px;
+}
+.cover {
+  width:100%; aspect-ratio:16/10; object-fit:cover;
+  background:var(--panel2); border-radius:8px; display:block;
+}
+.cover.square { aspect-ratio:1/1; }
+.section { padding:27px 0 12px; scroll-margin-top:12px; }
+.sectionhead {
+  display:flex; justify-content:space-between;
+  align-items:center; gap:12px; margin-bottom:15px;
+}
+.small { font-size:12px; color:var(--muted); }
+.grid {
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+.card {
+  display:block; background:var(--panel);
+  border:1px solid var(--line); border-radius:9px;
+  overflow:hidden; min-width:0;
+}
+.card .cover { border-radius:0; aspect-ratio:1/1; }
+.cardbody { padding:12px; }
+.card p { font-size:12px; margin:4px 0; }
+.card:hover { border-color:#397dbb; }
+.pill {
+  display:inline-block; font-size:10px; padding:3px 7px;
+  border-radius:4px; background:#142b43; color:#8dc6ff;
+}
+.filters { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 18px; }
+.filters button {
+  background:var(--panel); border:1px solid var(--line);
+  color:var(--muted); border-radius:20px;
+  padding:7px 13px; font-size:12px; cursor:pointer;
+}
+.filters button.active {
+  background:#142e4a; color:white; border-color:var(--blue);
+}
+.article { max-width:760px; margin:25px auto; }
+.article .cover { aspect-ratio:16/8; margin:18px 0; }
+.article h1 { font-size:clamp(30px,6vw,44px); }
+.articlebody { color:#d0d9e7; line-height:1.9; white-space:pre-line; }
+.empty { color:var(--muted); padding:24px 0; }
+footer { border-top:1px solid var(--line); margin-top:45px; padding:25px 0; }
+.footrow { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.notice { font-size:12px; color:var(--muted); }
+[hidden] { display:none !important; }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, input {
-      font: inherit;
-    }
-
-    .wrap {
-      width: min(1080px, 92%);
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: #05080ff2;
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding: 14px 0;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-    }
-
-    .logo span {
-      color: var(--blue);
-    }
-
-    nav {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    nav a:hover,
-    nav a:focus {
-      color: var(--bright);
-    }
-
-    .hero {
-      padding: 48px 0 30px;
-    }
-
-    .eyebrow {
-      color: var(--bright);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 11px;
-      font-weight: bold;
-    }
-
-    h1 {
-      font-size: clamp(38px, 8vw, 68px);
-      line-height: 1.03;
-      margin: 12px 0;
-      letter-spacing: -2px;
-    }
-
-    h1 span {
-      color: var(--blue);
-      text-shadow: 0 0 24px #168bff40;
-    }
-
-    .intro {
-      color: var(--muted);
-      max-width: 560px;
-      font-size: 15px;
-    }
-
-    .search {
-      display: flex;
-      gap: 8px;
-      margin-top: 24px;
-      max-width: 540px;
-    }
-
-    .search input {
-      min-width: 0;
-      flex: 1;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      color: white;
-      padding: 13px;
-      border-radius: 8px;
-      outline: none;
-    }
-
-    .search input:focus {
-      border-color: var(--blue);
-    }
-
-    .btn {
-      display: inline-block;
-      border: 0;
-      border-radius: 7px;
-      padding: 11px 16px;
-      background: var(--blue);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .btn:hover {
-      background: #0875dc;
-    }
-
-    .featured {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: center;
-      margin: 22px 0 38px;
-      padding: 24px;
-      border: 1px solid #153b64;
-      border-radius: 14px;
-      background:
-        radial-gradient(ellipse at top right, #12335c 0, transparent 65%),
-        var(--panel);
-    }
-
-    .cover {
-      min-height: 220px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:
-        linear-gradient(140deg, #0c2441, #06101f 55%, #104c83);
-      border: 1px solid #21568a;
-      overflow: hidden;
-    }
-
-    .cover strong {
-      font-size: clamp(32px, 7vw, 55px);
-      letter-spacing: 4px;
-      color: #d8edff;
-      text-shadow: 0 0 25px #168bffb0;
-    }
-
-    .cover small {
-      display: block;
-      font-size: 11px;
-      letter-spacing: 5px;
-      color: var(--bright);
-    }
-
-    h2 {
-      font-size: 23px;
-      margin: 0 0 15px;
-    }
-
-    h3 {
-      font-size: 17px;
-      margin: 8px 0 4px;
-    }
-
-    p {
-      margin-top: 6px;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .section {
-      padding: 18px 0 32px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .section-head h2 {
-      margin: 0;
-    }
-
-    .section-head a {
-      color: var(--bright);
-      font-size: 13px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-      min-width: 0;
-      overflow-wrap: anywhere;
-      transition: border-color .2s, transform .2s;
-    }
-
-    .card:hover {
-      border-color: var(--blue);
-      transform: translateY(-2px);
-    }
-
-    .mini-cover {
-      height: 100px;
-      display: grid;
-      place-items: center;
-      border-radius: 7px;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #0e3156, #101827);
-      color: var(--bright);
-      font-size: 25px;
-      font-weight: bold;
-    }
-
-    .tag {
-      display: inline-block;
-      color: var(--bright);
-      background: #102b48;
-      border-radius: 4px;
-      padding: 3px 7px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .card-link {
-      display: inline-block;
-      margin-top: 10px;
-      color: var(--bright);
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    .notice {
-      border-left: 3px solid var(--blue);
-      padding: 10px 13px;
-      background: #0b1422;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 15px;
-    }
-
-    .empty {
-      display: none;
-      color: var(--muted);
-      padding: 20px 0;
-    }
-
-    footer {
-      margin-top: 30px;
-      border-top: 1px solid var(--border);
-      padding: 26px 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    [hidden] {
-      display: none !important;
-    }
-
-    @media (max-width: 650px) {
-      .topbar {
-        align-items: flex-start;
-      }
-
-      nav {
-        gap: 10px;
-      }
-
-      .featured {
-        grid-template-columns: 1fr;
-        padding: 16px;
-      }
-
-      .cover {
-        min-height: 180px;
-      }
-
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
-
-      .card {
-        padding: 12px;
-      }
-
-      .search .btn {
-        padding: 10px;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      nav a {
-        font-size: 12px;
-      }
-    }
-  </style>
+@media(max-width:700px) {
+  .top { gap:10px; flex-wrap:wrap; }
+  .brand { font-size:22px; }
+  .search { order:3; flex-basis:100%; }
+  nav { gap:19px; }
+  .hero { padding-top:27px; }
+  .feature { grid-template-columns:1fr; padding:14px; gap:13px; }
+  .feature .cover { aspect-ratio:16/9; }
+  .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .cardbody { padding:10px; }
+  .section { padding-top:23px; }
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <div class="wrap topbar">
-      <a class="logo" href="#home" aria-label="HexMedia home">
-        HEX<span>MEDIA</span>
-      </a>
-
-      <nav aria-label="Main navigation">
-        <a href="#music">Music</a>
-        <a href="#videos">Videos</a>
-        <a href="#lyrics">Lyrics</a>
-        <a href="#artists">Artists</a>
-        <a href="#news">News</a>
-      </nav>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="./" aria-label="HexMedia home">HEX<span>MEDIA</span></a>
+      <div class="tag">SOUND / CULTURE / DISCOVERY</div>
+      <div class="search">
+        <input id="search" type="search"
+          placeholder="Search songs, artists, news..."
+          aria-label="Search content">
+      </div>
     </div>
-  </header>
+    <nav aria-label="Main navigation">
+      <a href="./">Home</a>
+      <a href="#music">Music</a>
+      <a href="#videos">Videos</a>
+      <a href="#lyrics">Lyrics</a>
+      <a href="#news">News</a>
+      <a href="#artists">Artists</a>
+    </nav>
+  </div>
+</header>
 
-  <main class="wrap" id="home">
+<main class="wrap">
+  <div id="home">
     <section class="hero">
-      <div class="eyebrow">Your underground entertainment source</div>
-      <h1>Discover the<br><span>Next Wave.</span></h1>
-      <p class="intro">
-        New sounds. Raw talent. African music culture.
-        Explore music, videos, lyrics, artists and entertainment
-        stories — all in one place.
-      </p>
-
-      <form class="search" id="searchForm" role="search">
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Search music, artists, lyrics, news..."
-          aria-label="Search HexMedia content">
-        <button class="btn" type="submit">Search</button>
-      </form>
-      <p class="muted" id="searchStatus" aria-live="polite"></p>
-    </section>
-
-    <section class="featured" aria-label="Featured track">
-      <div class="cover" role="img" aria-label="HexMedia blue neon artwork">
-        <div>
-          <strong>HEX</strong>
-          <small>UNDERGROUND SOUND</small>
-        </div>
-      </div>
-
-      <div>
-        <span class="tag">Featured track</span>
-        <h2 style="margin-top:12px">Ori Mi</h2>
-        <p class="muted">Sharkbol</p>
-        <p>
-          Discover this featured track and explore more
-          underground sounds on HexMedia.
-        </p>
-        <a
-          class="btn"
-          href="https://audiomack.com/sharkbol/song/ori-mi"
-          target="_blank"
-          rel="noopener noreferrer">
-          ▶ Listen Now
-        </a>
+      <div class="kicker">INDEPENDENT MUSIC CULTURE</div>
+      <h1>Discover what's<br>next.</h1>
+      <p>New sounds, emerging artists, music videos, lyrics and stories
+        from the culture shaping tomorrow.</p>
+      <div class="actions">
+        <a class="btn primary" href="#music">Explore music ↗</a>
+        <a class="btn" href="#news">Latest stories</a>
       </div>
     </section>
+
+    <section class="feature" id="featured"></section>
 
     <section class="section" id="music">
-      <div class="section-head">
-        <h2>Latest Music</h2>
-        <a href="https://audiomack.com/" target="_blank"
-           rel="noopener noreferrer">Explore Audiomack ↗</a>
+      <div class="sectionhead">
+        <h2>Latest music</h2>
+        <span class="small">NEW RELEASES</span>
       </div>
-
-      <div class="grid">
-        <article class="card searchable" data-search="ori mi sharkbol music song">
-          <div class="mini-cover">01</div>
-          <span class="tag">Featured</span>
-          <h3>Ori Mi</h3>
-          <p class="muted">Sharkbol</p>
-          <a class="card-link"
-             href="https://audiomack.com/sharkbol/song/ori-mi"
-             target="_blank" rel="noopener noreferrer">Listen ↗</a>
-        </article>
-
-        <article class="card searchable" data-search="new music afrobeats underground">
-          <div class="mini-cover">02</div>
-          <span class="tag">Music</span>
-          <h3>Discover New Sounds</h3>
-          <p class="muted">Find your next favourite track.</p>
-          <a class="card-link"
-             href="https://audiomack.com/"
-             target="_blank" rel="noopener noreferrer">Explore music ↗</a>
-        </article>
-
-        <article class="card searchable" data-search="music submissions artists upload">
-          <div class="mini-cover">03</div>
-          <span class="tag">Artists</span>
-          <h3>Submit Your Music</h3>
-          <p class="muted">Want your song featured here?</p>
-          <a class="card-link" href="#contact">Get in touch ↓</a>
-        </article>
+      <div class="filters" id="filters">
+        <button class="active" data-category="All">All</button>
+        <button data-category="Afrobeats">Afrobeats</button>
+        <button data-category="Afro-drill">Afro-drill</button>
+        <button data-category="Hip-hop">Hip-hop</button>
       </div>
+      <div class="grid" id="music-grid"></div>
     </section>
 
     <section class="section" id="videos">
-      <div class="section-head">
-        <h2>Music Videos</h2>
-      </div>
-
-      <div class="grid">
-        <article class="card searchable" data-search="music videos youtube afrobeats">
-          <div class="mini-cover">▶</div>
-          <h3>Watch Music Videos</h3>
-          <p class="muted">Discover music visuals and performances.</p>
-          <a class="card-link"
-             href="https://www.youtube.com/"
-             target="_blank" rel="noopener noreferrer">Explore videos ↗</a>
-        </article>
-
-        <article class="card searchable" data-search="freestyles live sessions performances">
-          <div class="mini-cover">LIVE</div>
-          <h3>Freestyles & Live Sets</h3>
-          <p class="muted">A space for raw talent and live energy.</p>
-          <span class="tag">More coming soon</span>
-        </article>
-
-        <article class="card searchable" data-search="underground video spotlight">
-          <div class="mini-cover">HD</div>
-          <h3>Underground Spotlight</h3>
-          <p class="muted">Independent artists deserve a platform.</p>
-          <span class="tag">More coming soon</span>
-        </article>
-      </div>
+      <div class="sectionhead"><h2>Music videos</h2></div>
+      <div class="grid" id="videos-grid"></div>
     </section>
 
     <section class="section" id="lyrics">
-      <div class="section-head">
-        <h2>Lyrics Zone</h2>
-      </div>
-
-      <div class="grid">
-        <article class="card searchable" data-search="lyrics song meanings">
-          <span class="tag">Lyrics</span>
-          <h3>Song Lyrics</h3>
-          <p class="muted">Find lyrics and discover the meaning behind songs.</p>
-          <span class="tag">Coming soon</span>
-        </article>
-
-        <article class="card searchable" data-search="artist songwriters lyric credits">
-          <span class="tag">Credits</span>
-          <h3>Songwriters & Credits</h3>
-          <p class="muted">Give creators the credit they deserve.</p>
-          <span class="tag">Coming soon</span>
-        </article>
-
-        <article class="card searchable" data-search="lyrics submissions requests">
-          <span class="tag">Requests</span>
-          <h3>Request Lyrics</h3>
-          <p class="muted">Suggest a song for a future lyrics post.</p>
-          <a class="card-link" href="#contact">Contact us ↓</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="artists">
-      <div class="section-head">
-        <h2>Artist Spotlight</h2>
-      </div>
-
-      <div class="grid">
-        <article class="card searchable" data-search="sharkbol ori mi artist">
-          <div class="mini-cover">S</div>
-          <span class="tag">Artist</span>
-          <h3>Sharkbol</h3>
-          <p class="muted">Featured track: Ori Mi</p>
-          <a class="card-link"
-             href="https://audiomack.com/sharkbol/song/ori-mi"
-             target="_blank" rel="noopener noreferrer">Hear the track ↗</a>
-        </article>
-
-        <article class="card searchable" data-search="emerging african artists">
-          <div class="mini-cover">+</div>
-          <span class="tag">Discovery</span>
-          <h3>Emerging Artists</h3>
-          <p class="muted">Meet the next generation of African talent.</p>
-          <span class="tag">Coming soon</span>
-        </article>
-
-        <article class="card searchable" data-search="artist biography profile feature">
-          <div class="mini-cover">BIO</div>
-          <span class="tag">Profiles</span>
-          <h3>Artist Stories</h3>
-          <p class="muted">The people and stories behind the music.</p>
-          <span class="tag">Coming soon</span>
-        </article>
-      </div>
+      <div class="sectionhead"><h2>Lyrics</h2></div>
+      <div class="grid" id="lyrics-grid"></div>
     </section>
 
     <section class="section" id="news">
-      <div class="section-head">
-        <h2>Entertainment News</h2>
-      </div>
-
-      <div class="grid">
-        <article class="card searchable" data-search="african music entertainment news">
-          <span class="tag">News</span>
-          <h3>African Music Updates</h3>
-          <p class="muted">Follow new releases, artists and music culture.</p>
-          <span class="tag">Stories coming soon</span>
-        </article>
-
-        <article class="card searchable" data-search="release radar new singles albums">
-          <span class="tag">Releases</span>
-          <h3>Release Radar</h3>
-          <p class="muted">A home for new singles and projects.</p>
-          <span class="tag">Stories coming soon</span>
-        </article>
-
-        <article class="card searchable" data-search="industry interviews music culture">
-          <span class="tag">Features</span>
-          <h3>Culture & Interviews</h3>
-          <p class="muted">Conversations with the voices shaping the scene.</p>
-          <span class="tag">Stories coming soon</span>
-        </article>
-      </div>
+      <div class="sectionhead"><h2>Entertainment news</h2></div>
+      <div class="grid" id="news-grid"></div>
     </section>
 
-    <p class="empty" id="noResults">
-      No matching content found. Try another search.
-    </p>
-
-    <div class="notice">
-      HexMedia is an independent entertainment website.
-      Always follow the original artist or platform's terms when
-      listening to or sharing music.
-    </div>
-
-    <section class="section" id="contact">
-      <h2>Get Involved</h2>
-      <p class="muted">
-        Artists, producers and music fans — HexMedia is growing.
-        Add your preferred contact or submission link here when ready.
-      </p>
+    <section class="section" id="artists">
+      <div class="sectionhead"><h2>Artist spotlight</h2></div>
+      <div class="grid" id="artists-grid"></div>
     </section>
-  </main>
 
-  <footer>
-    <div class="wrap footer-inner">
-      <div>
-        <strong>HEX<span style="color:#168bff">MEDIA</span></strong>
-        <div>Underground Sound. Digital Culture.</div>
-      </div>
-      <div>© <span id="year"></span> HexMedia</div>
+    <p id="no-results" class="empty" hidden>No matching content found.</p>
+  </div>
+
+  <article id="detail" class="article" hidden></article>
+</main>
+
+<footer>
+  <div class="wrap footrow">
+    <div>
+      <a class="brand" href="./">HEX<span>MEDIA</span></a>
+      <div class="notice">Sound. Culture. Discovery.</div>
     </div>
-  </footer>
+    <div class="notice">Independent music culture · Built for discovery.</div>
+  </div>
+</footer>
 
-  <script>
-    const searchForm = document.getElementById("searchForm");
-    const searchInput = document.getElementById("searchInput");
-    const searchStatus = document.getElementById("searchStatus");
-    const noResults = document.getElementById("noResults");
-    const cards = Array.from(document.querySelectorAll(".searchable"));
+<script>
+/* HEXMEDIA CONTENT
+   Add your own music, videos, lyrics, news and artist profiles here.
+   Give each item a unique ID.
+*/
+const CONTENT = [
+  {
+    id:"midnight-drive",
+    type:"Music",
+    title:"Midnight Drive",
+    artist:"Your Artist Name",
+    category:"Afro-drill",
+    date:"2026-10-22",
+    image:"",
+    description:"Introduce the track, its sound, the artist and the story behind the release.",
+    lyrics:"",
+    video:"",
+    download:"",
+    featured:true
+  },
+  {
+    id:"new-wave",
+    type:"Music",
+    title:"The New Wave",
+    artist:"Your Artist Name",
+    category:"Afrobeats",
+    date:"2026-10-21",
+    image:"",
+    description:"Write an original description for this release.",
+    lyrics:"",
+    video:"",
+    download:""
+  },
+  {
+    id:"city-lights",
+    type:"Music",
+    title:"City Lights",
+    artist:"Your Artist Name",
+    category:"Hip-hop",
+    date:"2026-10-20",
+    image:"",
+    description:"Add the release details and a short introduction here.",
+    lyrics:"",
+    video:"",
+    download:""
+  },
+  {
+    id:"studio-session",
+    type:"Videos",
+    title:"Behind the Music",
+    artist:"Your Artist Name",
+    category:"Video",
+    date:"2026-10-19",
+    image:"",
+    description:"Add a description of this music video or studio session.",
+    video:""
+  },
+  {
+    id:"midnight-lyrics",
+    type:"Lyrics",
+    title:"Midnight Drive — Lyrics",
+    artist:"Your Artist Name",
+    category:"Lyrics",
+    date:"2026-10-18",
+    image:"",
+    description:"Read the lyrics below.",
+    lyrics:"Add lyrics here only when you have permission to publish them."
+  },
+  {
+    id:"music-scene",
+    type:"News",
+    title:"A New Chapter for the Music Scene",
+    artist:"HexMedia Editorial",
+    category:"News",
+    date:"2026-10-17",
+    image:"",
+    description:"Replace this sample with your own verified entertainment story."
+  },
+  {
+    id:"artist-spotlight",
+    type:"Artists",
+    title:"Artist Spotlight",
+    artist:"Your Artist Name",
+    category:"Artist profile",
+    date:"2026-10-16",
+    image:"",
+    description:"Add an artist biography, musical background and notable releases."
+  }
+];
 
-    function filterContent() {
-      const query = searchInput.value.trim().toLowerCase();
-      let count = 0;
+const fallbackImage =
+"data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(
+'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400"><rect width="640" height="400" fill="#101d30"/><path d="M0 330L240 120 390 260 510 150 640 270V400H0Z" fill="#142b43"/><circle cx="320" cy="190" r="60" fill="none" stroke="#168bff" stroke-width="3"/><path d="M305 155L365 190 305 225Z" fill="#168bff"/><text x="320" y="350" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#f2f5fa">HEXMEDIA</text></svg>'
+);
 
-      cards.forEach(function(card) {
-        const text = (
-          card.innerText + " " + (card.dataset.search || "")
-        ).toLowerCase();
+const $ = id => document.getElementById(id);
 
-        const matches = text.includes(query);
-        card.hidden = !matches;
+const safe = value => String(value ?? "").replace(/[&<>"']/g, ch => ({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+}[ch]));
 
-        if (matches) count++;
-      });
+const validUrl = value => {
+  try {
+    const u = new URL(value, location.href);
+    return ["https:","http:"].includes(u.protocol) ? u.href : "";
+  } catch {
+    return "";
+  }
+};
 
-      document.querySelectorAll(".section").forEach(function(section) {
-        const sectionCards = section.querySelectorAll(".searchable");
-        if (!sectionCards.length) return;
+const img = item => validUrl(item.image) || fallbackImage;
+const dateLabel = item => item.date ? safe(item.date) : "Latest";
+const itemUrl = item => "?song="+encodeURIComponent(item.id);
 
-        const visibleCards = Array.from(sectionCards).some(function(card) {
-          return !card.hidden;
-        });
+const card = item => `
+  <a class="card" href="${itemUrl(item)}">
+    <img class="cover" src="${img(item)}" alt="${safe(item.title)} cover"
+      loading="lazy" onerror="this.onerror=null;this.src='${fallbackImage}'">
+    <div class="cardbody">
+      <span class="pill">${safe(item.category || item.type)}</span>
+      <h3>${safe(item.title)}</h3>
+      <p>${safe(item.artist || "HexMedia")} · ${dateLabel(item)}</p>
+    </div>
+  </a>`;
 
-        section.hidden = query !== "" && !visibleCards;
-      });
+let currentCategory = "All";
 
-      noResults.style.display =
-        query !== "" && count === 0 ? "block" : "none";
+function renderCards(type,target,query="",category="All") {
+  const results = CONTENT.filter(item => {
+    const matchesType = item.type === type;
+    const text = [
+      item.title,item.artist,item.category,item.description
+    ].join(" ").toLowerCase();
+    const matchesQuery = text.includes(query.toLowerCase());
+    const matchesCategory = category === "All" ||
+      item.category.toLowerCase() === category.toLowerCase();
+    return matchesType && matchesQuery && matchesCategory;
+  });
 
-      searchStatus.textContent = query
-        ? count + (count === 1 ? " matching item" : " matching items")
-        : "";
+  $(target).innerHTML = results.map(card).join("");
+  return results.length;
+}
+
+function renderHome() {
+  $("home").hidden = false;
+  $("detail").hidden = true;
+  document.title = "HexMedia — Sound. Culture. Discovery.";
+
+  const featured = CONTENT.find(item => item.featured && item.type === "Music")
+    || CONTENT.find(item => item.type === "Music");
+
+  $("featured").innerHTML = featured ? `
+    <div>
+      <img class="cover" src="${img(featured)}" alt="${safe(featured.title)} cover"
+        onerror="this.onerror=null;this.src='${fallbackImage}'">
+    </div>
+    <div>
+      <div class="meta">FEATURED RELEASE · ${dateLabel(featured)}</div>
+      <h2>${safe(featured.title)}</h2>
+      <p>${safe(featured.artist)} · ${safe(featured.category)}</p>
+      <p>${safe(featured.description)}</p>
+      <a class="btn primary" href="${itemUrl(featured)}">Read song post ↗</a>
+    </div>` : "<p>Add a music item to the CONTENT list.</p>";
+
+  const query = $("search").value.trim();
+  let total = 0;
+
+  total += renderCards("Music","music-grid",query,currentCategory);
+  total += renderCards("Videos","videos-grid",query);
+  total += renderCards("Lyrics","lyrics-grid",query);
+  total += renderCards("News","news-grid",query);
+  total += renderCards("Artists","artists-grid",query);
+
+  $("no-results").hidden = total !== 0;
+
+  $("featured").hidden = Boolean(query) &&
+    ![featured?.title,featured?.artist,featured?.description]
+      .join(" ").toLowerCase().includes(query.toLowerCase());
+}
+
+function renderDetail(item) {
+  $("home").hidden = true;
+  $("detail").hidden = false;
+  document.title = item.title + " — HexMedia";
+
+  let extras = "";
+
+  if(item.type === "Lyrics" && item.lyrics) {
+    extras += `<h2>Lyrics</h2>
+      <p class="articlebody">${safe(item.lyrics)}</p>`;
+  }
+
+  if(item.video) {
+    const videoUrl = validUrl(item.video);
+    if(videoUrl) {
+      extras += `<p><a class="btn primary" href="${safe(videoUrl)}"
+        target="_blank" rel="noopener noreferrer">Watch video ↗</a></p>`;
     }
+  }
 
-    searchForm.addEventListener("submit", function(event) {
-      event.preventDefault();
-      filterContent();
-    });
+  if(item.download) {
+    const downloadUrl = validUrl(item.download);
+    if(downloadUrl) {
+      extras += `<p><a class="btn primary" href="${safe(downloadUrl)}"
+        target="_blank" rel="noopener noreferrer">Official download ↗</a></p>`;
+    }
+  }
 
-    searchInput.addEventListener("input", filterContent);
+  $("detail").innerHTML = `
+    <p><a class="small" href="./">← Back to HexMedia</a></p>
+    <span class="pill">${safe(item.type)} · ${safe(item.category || "")}</span>
+    <h1>${safe(item.title)}</h1>
+    <p>By ${safe(item.artist || "HexMedia")} · ${dateLabel(item)}</p>
+    <img class="cover" src="${img(item)}" alt="${safe(item.title)} cover"
+      onerror="this.onerror=null;this.src='${fallbackImage}'">
+    <div class="articlebody">${safe(item.description || "")}</div>
+    ${extras}
+    <div class="section">
+      <h2>More to discover</h2>
+      <div class="grid">
+        ${CONTENT.filter(other => other.id !== item.id)
+          .slice(0,4).map(card).join("")}
+      </div>
+    </div>`;
+}
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+function route() {
+  const id = new URLSearchParams(location.search).get("song");
+
+  if(id) {
+    const item = CONTENT.find(entry => entry.id === id);
+
+    if(item) {
+      renderDetail(item);
+    } else {
+      $("home").hidden = true;
+      $("detail").hidden = false;
+      document.title = "Post not found — HexMedia";
+      $("detail").innerHTML = `
+        <h1>Post not found</h1>
+        <p>This post may have moved.</p>
+        <a class="btn primary" href="./">Return home</a>`;
+    }
+  } else {
+    renderHome();
+  }
+}
+
+$("search").addEventListener("input", () => {
+  if(new URLSearchParams(location.search).has("song")) {
+    history.replaceState({}, "", location.pathname);
+  }
+  renderHome();
+});
+
+$("filters").addEventListener("click", event => {
+  const button = event.target.closest("button[data-category]");
+  if(!button) return;
+
+  currentCategory = button.dataset.category;
+
+  $("filters").querySelectorAll("button").forEach(b => {
+    b.classList.toggle("active",b === button);
+  });
+
+  renderHome();
+});
+
+window.addEventListener("popstate",route);
+route();
+</script>
 </body>
-          </html>
+</html>
