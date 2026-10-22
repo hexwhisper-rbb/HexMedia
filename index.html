@@ -1,1 +1,271 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090510">
+  <meta name="description" content="HexMedia is your underground hub for Afro music, videos, lyrics, emerging artists and entertainment news.">
+  <title>HexMedia | Access The Underground</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #090510;
+      color: #f5efff;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header {
+      padding: 20px 16px;
+      background: #10091c;
+      border-bottom: 1px solid #382052;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .logo {
+      margin: 0;
+      color: #bf78ff;
+      font-size: 27px;
+      letter-spacing: 3px;
+    }
+
+    .tagline {
+      margin: 3px 0 0;
+      color: #a89bb9;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    .nav a {
+      color: #e1d1f5;
+    }
+
+    .nav a:hover {
+      color: #c47bff;
+    }
+
+    .hero {
+      padding: 48px 20px;
+      text-align: center;
+      background: linear-gradient(145deg, #211035, #0d0716);
+      border-bottom: 1px solid #39204f;
+    }
+
+    .status {
+      color: #c17cff;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .hero h2 {
+      margin: 12px 0;
+      font-size: clamp(28px, 7vw, 44px);
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 540px;
+      margin: 12px auto 24px;
+      color: #c3b5d2;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      margin: 4px;
+      border: 1px solid #bd70ff;
+      border-radius: 5px;
+      background: #8e35d0;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #d8b3ff;
+    }
+
+    main {
+      padding: 25px 16px;
+    }
+
+    .section-title {
+      color: #d6aaff;
+      font-size: 21px;
+      margin: 0 0 6px;
+    }
+
+    .muted {
+      color: #a89bb9;
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0 32px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 16px 12px;
+      background: #140c20;
+      border: 1px solid #352047;
+      border-radius: 7px;
+    }
+
+    .card h3 {
+      margin: 0 0 5px;
+      color: #d5a5ff;
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #b9adc7;
+      font-size: 13px;
+    }
+
+    .notice {
+      padding: 18px;
+      border-left: 3px solid #a74df0;
+      background: #150c22;
+      margin: 24px 0;
+    }
+
+    footer {
+      padding: 22px 16px;
+      border-top: 1px solid #352047;
+      background: #0e0817;
+      text-align: center;
+      color: #a89bb9;
+      font-size: 12px;
+    }
+
+    @media (min-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding: 65px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="wrap">
+      <h1 class="logo">HEXMEDIA</h1>
+      <p class="tagline">ACCESS THE UNDERGROUND.</p>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#music">Music</a>
+        <a href="#videos">Videos</a>
+        <a href="#lyrics">Lyrics</a>
+        <a href="#news">News</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="status">[ SIGNAL ACTIVE ]</div>
+
+      <h2>Discover The Sound<br>Beyond The Mainstream.</h2>
+
+      <p>
+        Your underground destination for Afro music,
+        videos, lyrics, emerging artists and entertainment culture.
+      </p>
+
+      <a class="btn" href="#music">Explore Music</a>
+      <a class="btn btn-outline" href="#news">Latest Updates</a>
+    </div>
+  </section>
+
+  <main class="wrap">
+
+    <section id="music">
+      <h2 class="section-title">// Explore Categories</h2>
+      <p class="muted">Discover what's happening underground.</p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>♫ Music</h3>
+          <p>Discover fresh sounds and new releases.</p>
+        </article>
+
+        <article class="card" id="videos">
+          <h3>▶ Videos</h3>
+          <p>Explore music videos and visual content.</p>
+        </article>
+
+        <article class="card" id="lyrics">
+          <h3>♪ Lyrics</h3>
+          <p>Explore song lyrics and meanings.</p>
+        </article>
+
+        <article class="card" id="news">
+          <h3>◈ Entertainment</h3>
+          <p>Follow artists, trends and music culture.</p>
+        </article>
+
+        <article class="card">
+          <h3>⬡ New Artists</h3>
+          <p>Discover emerging African talent.</p>
+        </article>
+
+        <article class="card">
+          <h3>⚡ Updates</h3>
+          <p>Stay connected to the latest releases.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="notice">
+      <h2 class="section-title">The Underground Starts Here.</h2>
+      <p class="muted">
+        HexMedia is building a home for fresh sounds,
+        creative voices and Afro-entertainment culture.
+        New content will appear here as the platform grows.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>HEXMEDIA © 2026</p>
+    <p>UNDERGROUND CULTURE // DIGITAL FREQUENCY</p>
+  </footer>
+
+</body>
+  </html>
