@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090510">
-  <meta name="description" content="HexMedia — Discover underground Afro music, new releases, artists and entertainment culture.">
-  <title>HEXMEDIA | Underground Music</title>
+  <meta name="theme-color" content="#05080f">
+  <meta name="description" content="HEXMEDIA — Discover underground African music, videos, lyrics, artists and entertainment news.">
+  <title>HEXMEDIA — Underground Sound</title>
 
   <style>
     :root {
-      --bg: #090510;
-      --panel: #140c20;
-      --purple: #b86aff;
-      --bright: #9238e8;
-      --text: #f7efff;
-      --muted: #ad9cbd;
-      --border: #352047;
+      --bg: #05080f;
+      --panel: #0b1220;
+      --blue: #168bff;
+      --bright: #56b5ff;
+      --text: #f3f7ff;
+      --muted: #9aa9bd;
+      --border: #172b45;
     }
 
     * {
@@ -25,6 +25,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 76px;
     }
 
     body {
@@ -45,211 +46,262 @@
     }
 
     .wrap {
-      width: 100%;
-      max-width: 1000px;
+      width: min(1080px, 92%);
       margin: auto;
-      padding-left: 16px;
-      padding-right: 16px;
     }
 
     header {
-      background: #10091b;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #05080ff2;
       border-bottom: 1px solid var(--border);
-      padding: 18px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 14px 0;
     }
 
     .logo {
-      margin: 0;
-      color: var(--purple);
-      font-size: 27px;
-      letter-spacing: 3px;
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
     }
 
-    .tagline {
-      color: var(--muted);
-      margin: 0;
-      font-size: 11px;
-      letter-spacing: 1.5px;
+    .logo span {
+      color: var(--blue);
     }
 
     nav {
       display: flex;
+      gap: 15px;
       flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 16px;
-      font-size: 14px;
     }
 
-    nav a:hover {
-      color: var(--purple);
+    nav a {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: var(--bright);
     }
 
     .hero {
-      padding: 42px 0;
-      text-align: center;
-      background: linear-gradient(145deg, #26113a, #0b0611);
-      border-bottom: 1px solid var(--border);
+      padding: 48px 0 30px;
     }
 
     .eyebrow {
-      color: var(--purple);
-      font-size: 12px;
-      letter-spacing: 2px;
+      color: var(--bright);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: bold;
     }
 
-    .hero h2 {
-      font-size: clamp(29px, 7vw, 46px);
-      line-height: 1.2;
+    h1 {
+      font-size: clamp(38px, 8vw, 68px);
+      line-height: 1.03;
       margin: 12px 0;
+      letter-spacing: -2px;
     }
 
-    .hero p {
-      color: #c7b7d7;
+    h1 span {
+      color: var(--blue);
+      text-shadow: 0 0 24px #168bff40;
+    }
+
+    .intro {
+      color: var(--muted);
+      max-width: 560px;
+      font-size: 15px;
+    }
+
+    .search {
+      display: flex;
+      gap: 8px;
+      margin-top: 24px;
       max-width: 540px;
-      margin: 0 auto 20px;
+    }
+
+    .search input {
+      min-width: 0;
+      flex: 1;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: white;
+      padding: 13px;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .search input:focus {
+      border-color: var(--blue);
     }
 
     .btn {
       display: inline-block;
-      background: var(--bright);
-      border: 1px solid var(--purple);
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 16px;
+      background: var(--blue);
       color: white;
-      border-radius: 5px;
-      padding: 10px 16px;
       font-weight: bold;
-      text-align: center;
       cursor: pointer;
+      text-align: center;
     }
 
     .btn:hover {
-      background: #a54af2;
+      background: #0875dc;
     }
 
-    main {
-      padding-top: 28px;
-      padding-bottom: 35px;
+    .featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+      margin: 22px 0 38px;
+      padding: 24px;
+      border: 1px solid #153b64;
+      border-radius: 14px;
+      background:
+        radial-gradient(ellipse at top right, #12335c 0, transparent 65%),
+        var(--panel);
     }
 
-    .section-title {
-      color: #ddbaff;
-      font-size: 22px;
-      margin: 0 0 4px;
+    .cover {
+      min-height: 220px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(140deg, #0c2441, #06101f 55%, #104c83);
+      border: 1px solid #21568a;
+      overflow: hidden;
+    }
+
+    .cover strong {
+      font-size: clamp(32px, 7vw, 55px);
+      letter-spacing: 4px;
+      color: #d8edff;
+      text-shadow: 0 0 25px #168bffb0;
+    }
+
+    .cover small {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: var(--bright);
+    }
+
+    h2 {
+      font-size: 23px;
+      margin: 0 0 15px;
+    }
+
+    h3 {
+      font-size: 17px;
+      margin: 8px 0 4px;
+    }
+
+    p {
+      margin-top: 6px;
     }
 
     .muted {
       color: var(--muted);
-      font-size: 14px;
-      margin-top: 4px;
-    }
-
-    .search {
-      width: 100%;
-      margin: 18px 0;
-      padding: 13px;
-      border: 1px solid #49305d;
-      border-radius: 6px;
-      outline: none;
-      background: #120b1a;
-      color: white;
-    }
-
-    .search:focus {
-      border-color: var(--purple);
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .filter {
-      background: #180e24;
-      color: #d6c4e8;
-      border: 1px solid var(--border);
-      padding: 7px 12px;
-      border-radius: 20px;
-      cursor: pointer;
       font-size: 13px;
     }
 
-    .filter.active {
-      background: var(--bright);
-      color: white;
-      border-color: var(--purple);
+    .section {
+      padding: 18px 0 32px;
     }
 
-    .music-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .track {
-      min-width: 0;
-      overflow: hidden;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-
-    .cover {
-      width: 100%;
-      aspect-ratio: 1 / 1;
+    .section-head {
       display: flex;
       align-items: center;
-      justify-content: center;
-      background: linear-gradient(145deg, #59237f, #170b29 70%);
-      color: #e5c5ff;
-      font-size: 35px;
-      font-weight: bold;
-      letter-spacing: 2px;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
     }
 
-    .cover.two {
-      background: linear-gradient(145deg, #35216e, #100a1d 75%);
-    }
-
-    .cover.three {
-      background: linear-gradient(145deg, #752e67, #180a22 75%);
-    }
-
-    .cover.four {
-      background: linear-gradient(145deg, #4c3a92, #100819 75%);
-    }
-
-    .track-info {
-      padding: 12px;
-    }
-
-    .track h3 {
-      font-size: 15px;
+    .section-head h2 {
       margin: 0;
-      overflow-wrap: anywhere;
     }
 
-    .artist {
+    .section-head a {
+      color: var(--bright);
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .card:hover {
+      border-color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .mini-cover {
+      height: 100px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #0e3156, #101827);
+      color: var(--bright);
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--bright);
+      background: #102b48;
+      border-radius: 4px;
+      padding: 3px 7px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--bright);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .notice {
+      border-left: 3px solid var(--blue);
+      padding: 10px 13px;
+      background: #0b1422;
       color: var(--muted);
       font-size: 13px;
-      margin: 3px 0 8px;
-    }
-
-    .genre {
-      display: inline-block;
-      color: #d8b5ff;
-      border: 1px solid #53326d;
-      border-radius: 3px;
-      padding: 2px 6px;
-      font-size: 10px;
-      margin-bottom: 12px;
-    }
-
-    .download {
-      display: block;
-      width: 100%;
-      padding: 9px 5px;
-      font-size: 13px;
+      margin-top: 15px;
     }
 
     .empty {
@@ -258,239 +310,373 @@
       padding: 20px 0;
     }
 
-    .info-box {
-      margin-top: 30px;
-      padding: 18px;
-      border-left: 3px solid var(--purple);
-      background: #150c21;
-    }
-
     footer {
-      text-align: center;
+      margin-top: 30px;
       border-top: 1px solid var(--border);
-      background: #0e0816;
+      padding: 26px 0;
       color: var(--muted);
-      padding: 22px 10px;
       font-size: 12px;
     }
 
-    @media (min-width: 620px) {
-      .music-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 650px) {
+      .topbar {
+        align-items: flex-start;
       }
 
-      .hero {
-        padding: 60px 0;
+      nav {
+        gap: 10px;
+      }
+
+      .featured {
+        grid-template-columns: 1fr;
+        padding: 16px;
+      }
+
+      .cover {
+        min-height: 180px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .card {
+        padding: 12px;
+      }
+
+      .search .btn {
+        padding: 10px;
       }
     }
 
-    @media (min-width: 850px) {
-      .music-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+    @media (max-width: 360px) {
+      .grid {
+        grid-template-columns: 1fr;
       }
-    }
 
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
+      nav a {
+        font-size: 12px;
       }
     }
   </style>
 </head>
 
 <body>
-
   <header>
-    <div class="wrap">
-      <h1 class="logo">HEXMEDIA</h1>
-      <p class="tagline">ACCESS THE UNDERGROUND.</p>
+    <div class="wrap topbar">
+      <a class="logo" href="#home" aria-label="HexMedia home">
+        HEX<span>MEDIA</span>
+      </a>
 
       <nav aria-label="Main navigation">
-        <a href="#home">Home</a>
         <a href="#music">Music</a>
         <a href="#videos">Videos</a>
         <a href="#lyrics">Lyrics</a>
+        <a href="#artists">Artists</a>
         <a href="#news">News</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero" id="home">
-    <div class="wrap">
-      <div class="eyebrow">[ SIGNAL ACTIVE ]</div>
-      <h2>THE SOUND<br>BEYOND THE MAINSTREAM.</h2>
-      <p>
-        Discover Afro sounds, underground releases,
-        emerging artists and entertainment culture.
+  <main class="wrap" id="home">
+    <section class="hero">
+      <div class="eyebrow">Your underground entertainment source</div>
+      <h1>Discover the<br><span>Next Wave.</span></h1>
+      <p class="intro">
+        New sounds. Raw talent. African music culture.
+        Explore music, videos, lyrics, artists and entertainment
+        stories — all in one place.
       </p>
-      <a class="btn" href="#music">Explore Music ↓</a>
+
+      <form class="search" id="searchForm" role="search">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search music, artists, lyrics, news..."
+          aria-label="Search HexMedia content">
+        <button class="btn" type="submit">Search</button>
+      </form>
+      <p class="muted" id="searchStatus" aria-live="polite"></p>
+    </section>
+
+    <section class="featured" aria-label="Featured track">
+      <div class="cover" role="img" aria-label="HexMedia blue neon artwork">
+        <div>
+          <strong>HEX</strong>
+          <small>UNDERGROUND SOUND</small>
+        </div>
+      </div>
+
+      <div>
+        <span class="tag">Featured track</span>
+        <h2 style="margin-top:12px">Ori Mi</h2>
+        <p class="muted">Sharkbol</p>
+        <p>
+          Discover this featured track and explore more
+          underground sounds on HexMedia.
+        </p>
+        <a
+          class="btn"
+          href="https://audiomack.com/sharkbol/song/ori-mi"
+          target="_blank"
+          rel="noopener noreferrer">
+          ▶ Listen Now
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="music">
+      <div class="section-head">
+        <h2>Latest Music</h2>
+        <a href="https://audiomack.com/" target="_blank"
+           rel="noopener noreferrer">Explore Audiomack ↗</a>
+      </div>
+
+      <div class="grid">
+        <article class="card searchable" data-search="ori mi sharkbol music song">
+          <div class="mini-cover">01</div>
+          <span class="tag">Featured</span>
+          <h3>Ori Mi</h3>
+          <p class="muted">Sharkbol</p>
+          <a class="card-link"
+             href="https://audiomack.com/sharkbol/song/ori-mi"
+             target="_blank" rel="noopener noreferrer">Listen ↗</a>
+        </article>
+
+        <article class="card searchable" data-search="new music afrobeats underground">
+          <div class="mini-cover">02</div>
+          <span class="tag">Music</span>
+          <h3>Discover New Sounds</h3>
+          <p class="muted">Find your next favourite track.</p>
+          <a class="card-link"
+             href="https://audiomack.com/"
+             target="_blank" rel="noopener noreferrer">Explore music ↗</a>
+        </article>
+
+        <article class="card searchable" data-search="music submissions artists upload">
+          <div class="mini-cover">03</div>
+          <span class="tag">Artists</span>
+          <h3>Submit Your Music</h3>
+          <p class="muted">Want your song featured here?</p>
+          <a class="card-link" href="#contact">Get in touch ↓</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="videos">
+      <div class="section-head">
+        <h2>Music Videos</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card searchable" data-search="music videos youtube afrobeats">
+          <div class="mini-cover">▶</div>
+          <h3>Watch Music Videos</h3>
+          <p class="muted">Discover music visuals and performances.</p>
+          <a class="card-link"
+             href="https://www.youtube.com/"
+             target="_blank" rel="noopener noreferrer">Explore videos ↗</a>
+        </article>
+
+        <article class="card searchable" data-search="freestyles live sessions performances">
+          <div class="mini-cover">LIVE</div>
+          <h3>Freestyles & Live Sets</h3>
+          <p class="muted">A space for raw talent and live energy.</p>
+          <span class="tag">More coming soon</span>
+        </article>
+
+        <article class="card searchable" data-search="underground video spotlight">
+          <div class="mini-cover">HD</div>
+          <h3>Underground Spotlight</h3>
+          <p class="muted">Independent artists deserve a platform.</p>
+          <span class="tag">More coming soon</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="lyrics">
+      <div class="section-head">
+        <h2>Lyrics Zone</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card searchable" data-search="lyrics song meanings">
+          <span class="tag">Lyrics</span>
+          <h3>Song Lyrics</h3>
+          <p class="muted">Find lyrics and discover the meaning behind songs.</p>
+          <span class="tag">Coming soon</span>
+        </article>
+
+        <article class="card searchable" data-search="artist songwriters lyric credits">
+          <span class="tag">Credits</span>
+          <h3>Songwriters & Credits</h3>
+          <p class="muted">Give creators the credit they deserve.</p>
+          <span class="tag">Coming soon</span>
+        </article>
+
+        <article class="card searchable" data-search="lyrics submissions requests">
+          <span class="tag">Requests</span>
+          <h3>Request Lyrics</h3>
+          <p class="muted">Suggest a song for a future lyrics post.</p>
+          <a class="card-link" href="#contact">Contact us ↓</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="artists">
+      <div class="section-head">
+        <h2>Artist Spotlight</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card searchable" data-search="sharkbol ori mi artist">
+          <div class="mini-cover">S</div>
+          <span class="tag">Artist</span>
+          <h3>Sharkbol</h3>
+          <p class="muted">Featured track: Ori Mi</p>
+          <a class="card-link"
+             href="https://audiomack.com/sharkbol/song/ori-mi"
+             target="_blank" rel="noopener noreferrer">Hear the track ↗</a>
+        </article>
+
+        <article class="card searchable" data-search="emerging african artists">
+          <div class="mini-cover">+</div>
+          <span class="tag">Discovery</span>
+          <h3>Emerging Artists</h3>
+          <p class="muted">Meet the next generation of African talent.</p>
+          <span class="tag">Coming soon</span>
+        </article>
+
+        <article class="card searchable" data-search="artist biography profile feature">
+          <div class="mini-cover">BIO</div>
+          <span class="tag">Profiles</span>
+          <h3>Artist Stories</h3>
+          <p class="muted">The people and stories behind the music.</p>
+          <span class="tag">Coming soon</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="news">
+      <div class="section-head">
+        <h2>Entertainment News</h2>
+      </div>
+
+      <div class="grid">
+        <article class="card searchable" data-search="african music entertainment news">
+          <span class="tag">News</span>
+          <h3>African Music Updates</h3>
+          <p class="muted">Follow new releases, artists and music culture.</p>
+          <span class="tag">Stories coming soon</span>
+        </article>
+
+        <article class="card searchable" data-search="release radar new singles albums">
+          <span class="tag">Releases</span>
+          <h3>Release Radar</h3>
+          <p class="muted">A home for new singles and projects.</p>
+          <span class="tag">Stories coming soon</span>
+        </article>
+
+        <article class="card searchable" data-search="industry interviews music culture">
+          <span class="tag">Features</span>
+          <h3>Culture & Interviews</h3>
+          <p class="muted">Conversations with the voices shaping the scene.</p>
+          <span class="tag">Stories coming soon</span>
+        </article>
+      </div>
+    </section>
+
+    <p class="empty" id="noResults">
+      No matching content found. Try another search.
+    </p>
+
+    <div class="notice">
+      HexMedia is an independent entertainment website.
+      Always follow the original artist or platform's terms when
+      listening to or sharing music.
     </div>
-  </section>
 
-  <main class="wrap">
-    <section id="music">
-      <h2 class="section-title">// Music Downloads</h2>
+    <section class="section" id="contact">
+      <h2>Get Involved</h2>
       <p class="muted">
-        Explore the sound. Discover your next favourite.
-      </p>
-
-      <input
-        class="search"
-        id="search"
-        type="search"
-        placeholder="Search songs, artists or genres..."
-        aria-label="Search music"
-      >
-
-      <div class="filters" aria-label="Filter music by genre">
-        <button class="filter active" data-genre="all">All Music</button>
-        <button class="filter" data-genre="Afrobeats">Afrobeats</button>
-        <button class="filter" data-genre="Amapiano">Amapiano</button>
-        <button class="filter" data-genre="Gospel">Gospel</button>
-        <button class="filter" data-genre="Hip-Hop">Hip-Hop</button>
-      </div>
-
-      <div class="music-grid" id="musicGrid">
-
-        <!-- Replace sample details with real, authorised releases. -->
-
-        
-<article class="track" data-genre="Afrobeats">
-  <div class="cover">HX-01</div>
-
-  <div class="track-info">
-    <h3>Ori Mi</h3>
-    <p class="artist">Sharkbol</p>
-    <span class="genre">Afrobeats</span>
-
-    <a class="btn download"
-       href="https://audiomack.com/sharkbol/song/ori-mi"
-       target="_blank"
-       rel="noopener noreferrer">
-      Listen Now
-    </a>
-  </div>
-</article>
-
-        <article class="track" data-genre="Amapiano">
-          <div class="cover two">HX-02</div>
-          <div class="track-info">
-            <h3>Sample Track Two</h3>
-            <p class="artist">Artist Name</p>
-            <span class="genre">Amapiano</span>
-            <a class="btn download" href="#music"
-               data-placeholder="true">Add Song File</a>
-          </div>
-        </article>
-
-        <article class="track" data-genre="Hip-Hop">
-          <div class="cover three">HX-03</div>
-          <div class="track-info">
-            <h3>Sample Track Three</h3>
-            <p class="artist">Artist Name</p>
-            <span class="genre">Hip-Hop</span>
-            <a class="btn download" href="#music"
-               data-placeholder="true">Add Song File</a>
-          </div>
-        </article>
-
-        <article class="track" data-genre="Gospel">
-          <div class="cover four">HX-04</div>
-          <div class="track-info">
-            <h3>Sample Track Four</h3>
-            <p class="artist">Artist Name</p>
-            <span class="genre">Gospel</span>
-            <a class="btn download" href="#music"
-               data-placeholder="true">Add Song File</a>
-          </div>
-        </article>
-
-      </div>
-
-      <p class="empty" id="empty">
-        No tracks found. Try another search.
-      </p>
-    </section>
-
-    <section class="info-box" id="videos">
-      <h2 class="section-title">▶ Videos</h2>
-      <p class="muted">
-        Music videos and visual releases are coming soon.
-      </p>
-      <a href="#news">Explore entertainment updates →</a>
-    </section>
-
-    <section class="info-box" id="lyrics">
-      <h2 class="section-title">♪ Lyrics</h2>
-      <p class="muted">
-        Song lyrics and artist stories will be featured here.
-      </p>
-    </section>
-
-    <section class="info-box" id="news">
-      <h2 class="section-title">◈ Entertainment News</h2>
-      <p class="muted">
-        Stay connected to emerging artists and Afro-entertainment culture.
+        Artists, producers and music fans — HexMedia is growing.
+        Add your preferred contact or submission link here when ready.
       </p>
     </section>
   </main>
 
   <footer>
-    <p>HEXMEDIA © 2026</p>
-    <p>UNDERGROUND CULTURE // DIGITAL FREQUENCY</p>
+    <div class="wrap footer-inner">
+      <div>
+        <strong>HEX<span style="color:#168bff">MEDIA</span></strong>
+        <div>Underground Sound. Digital Culture.</div>
+      </div>
+      <div>© <span id="year"></span> HexMedia</div>
+    </div>
   </footer>
 
   <script>
-    const search = document.getElementById("search");
-    const tracks = document.querySelectorAll(".track");
-    const filters = document.querySelectorAll(".filter");
-    const empty = document.getElementById("empty");
+    const searchForm = document.getElementById("searchForm");
+    const searchInput = document.getElementById("searchInput");
+    const searchStatus = document.getElementById("searchStatus");
+    const noResults = document.getElementById("noResults");
+    const cards = Array.from(document.querySelectorAll(".searchable"));
 
-    let selectedGenre = "all";
+    function filterContent() {
+      const query = searchInput.value.trim().toLowerCase();
+      let count = 0;
 
-    function filterTracks() {
-      const query = search.value.toLowerCase().trim();
-      let visible = 0;
+      cards.forEach(function(card) {
+        const text = (
+          card.innerText + " " + (card.dataset.search || "")
+        ).toLowerCase();
 
-      tracks.forEach(function(track) {
-        const text = track.textContent.toLowerCase();
-        const genre = track.dataset.genre;
+        const matches = text.includes(query);
+        card.hidden = !matches;
 
-        const matchesText = text.includes(query);
-        const matchesGenre =
-          selectedGenre === "all" || genre === selectedGenre;
-
-        const show = matchesText && matchesGenre;
-        track.style.display = show ? "" : "none";
-
-        if (show) visible++;
+        if (matches) count++;
       });
 
-      empty.style.display = visible ? "none" : "block";
-    }
+      document.querySelectorAll(".section").forEach(function(section) {
+        const sectionCards = section.querySelectorAll(".searchable");
+        if (!sectionCards.length) return;
 
-    search.addEventListener("input", filterTracks);
-
-    filters.forEach(function(button) {
-      button.addEventListener("click", function() {
-        selectedGenre = button.dataset.genre;
-
-        filters.forEach(function(item) {
-          item.classList.toggle("active", item === button);
+        const visibleCards = Array.from(sectionCards).some(function(card) {
+          return !card.hidden;
         });
 
-        filterTracks();
+        section.hidden = query !== "" && !visibleCards;
       });
+
+      noResults.style.display =
+        query !== "" && count === 0 ? "block" : "none";
+
+      searchStatus.textContent = query
+        ? count + (count === 1 ? " matching item" : " matching items")
+        : "";
+    }
+
+    searchForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      filterContent();
     });
 
-    document.querySelectorAll("[data-placeholder]").forEach(function(link) {
-      link.addEventListener("click", function(event) {
-        event.preventDefault();
-        alert("This is a sample track. Add an authorised music file URL to enable downloads.");
-      });
-    });
+    searchInput.addEventListener("input", filterContent);
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
   </script>
-
 </body>
-</html>
+          </html>
